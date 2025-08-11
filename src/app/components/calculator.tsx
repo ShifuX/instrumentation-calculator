@@ -30,13 +30,13 @@ const Calculator = ({ onMarkersChange }: CalculatorProps) => {
   const [DisplayFullAngleLine, setDisplayFullAngleLine] = useState<string>("0");
 
   function Calculate() {
-    let travel = CalculateTravel();
-    let run = CalculateRun(travel);
-    let newCenter = CalculateNewCenter(travel, run);
-    let halfAngleLine = CalculateHalfAngleLine();
-    let fullAngleLine = CalculateFullAngleLine();
+    const travel = CalculateTravel();
+    const run = CalculateRun(travel);
+    const newCenter = CalculateNewCenter(travel, run);
+    const halfAngleLine = CalculateHalfAngleLine();
+    const fullAngleLine = CalculateFullAngleLine();
 
-    let markers: Marker[] = [
+    const markers: Marker[] = [
       {
         inches: 4,
         label: "",
@@ -76,8 +76,8 @@ const Calculator = ({ onMarkersChange }: CalculatorProps) => {
   }
 
   function CalculateTravel(): number {
-    let radians = (Angle * Math.PI) / 180;
-    let travel = Offset / Math.sin(radians);
+    const radians = (Angle * Math.PI) / 180;
+    const travel = Offset / Math.sin(radians);
     setTravel(travel);
     setDisplayTravel(toMeasuringTapeFraction(travel));
 
@@ -85,15 +85,15 @@ const Calculator = ({ onMarkersChange }: CalculatorProps) => {
   }
 
   function CalculateRun(travel: number): number {
-    let radians = (Angle * Math.PI) / 180;
-    let run = travel * Math.cos(radians);
+    const radians = (Angle * Math.PI) / 180;
+    const run = travel * Math.cos(radians);
     setRun(run);
 
     return run;
   }
 
   function CalculateNewCenter(travel: number, run: number): number {
-    let newCenter = travel - run;
+    const newCenter = travel - run;
     setDisplayNewCenter(toMeasuringTapeFraction(newCenter));
 
     return newCenter;
@@ -101,14 +101,14 @@ const Calculator = ({ onMarkersChange }: CalculatorProps) => {
 
   // Will later use the benderRadius state variable
   function CalculateHalfAngleLine(): number {
-    let halfAngleLine = MULTIPLIER_HALF_ANGLE * (Angle / 2) * BENDER_RADIUS;
+    const halfAngleLine = MULTIPLIER_HALF_ANGLE * (Angle / 2) * BENDER_RADIUS;
     setDisplayHalfAngleLine(toMeasuringTapeFraction(halfAngleLine));
 
     return halfAngleLine;
   }
 
   function CalculateFullAngleLine(): number {
-    let fullAngleLine = MULTIPLIER_FULL_ANGLE * Angle * BENDER_RADIUS;
+    const fullAngleLine = MULTIPLIER_FULL_ANGLE * Angle * BENDER_RADIUS;
     setDisplayFullAngleLine(toMeasuringTapeFraction(fullAngleLine));
 
     return fullAngleLine;
