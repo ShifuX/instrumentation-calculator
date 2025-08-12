@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <div className="items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <Calculator onMarkersChange={setMarkers} />
-      <p>Currently measurements are being taken from right to left</p>
+      <p className="mt-2">Currently tube is running from right to left</p>
       <Tube lengthInInches={12} markers={markers} />
     </div>
   );

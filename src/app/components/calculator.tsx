@@ -153,33 +153,37 @@ const Calculator = ({ onMarkersChange }: CalculatorProps) => {
 
   return (
     <div>
-      <label className="pr-4">Offset:</label>
-      <input
-        type="number"
-        className=" border-2 p-2"
-        defaultValue={Offset}
-        onChange={(e) => setOffset(Number(e.target.value))}
-      />
+      <div className="flex flex-col gap-2">
+        <label className="pr-4">Offset:</label>
+        <input
+          type="number"
+          className=" border-2 p-2"
+          defaultValue={Offset}
+          onChange={(e) => setOffset(Number(e.target.value))}
+        />
 
-      <label className="pr-4">Angle:</label>
-      <input
-        type="number"
-        className=" border-2 p-2"
-        defaultValue={Angle}
-        onChange={(e) => setAngle(Number(e.target.value))}
-      />
+        <label className="pr-4">Angle:</label>
+        <input
+          type="number"
+          className=" border-2 p-2"
+          defaultValue={Angle}
+          onChange={(e) => setAngle(Number(e.target.value))}
+        />
 
-      <button
-        className="bg-blue-500 hover:bg-blue-400 p-2 rounded-full ml-4"
-        onClick={Calculate}
-      >
-        Calculate
-      </button>
+        <button
+          className="bg-blue-500 hover:bg-blue-400 p-2 rounded-full ml-4"
+          onClick={Calculate}
+        >
+          Calculate
+        </button>
+      </div>
 
-      <p>Travel: {DisplayTravel}</p>
-      <p>New Center: {DisplayNewCenter}</p>
-      <p>Half Angle Line: {DisplayHalfAngleLine}</p>
-      <p>Full Angle Line: {DisplayFullAngleLine}</p>
+      <div className="flex flex-col pt-10">
+        <p>Travel: {DisplayTravel}</p>
+        <p>New Center: {DisplayNewCenter}</p>
+        <p>Half Angle Line: {DisplayHalfAngleLine}</p>
+        <p>Full Angle Line: {DisplayFullAngleLine}</p>
+      </div>
     </div>
   );
 };
