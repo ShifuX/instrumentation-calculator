@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import FractionInput from "./fractioninput";
 
 interface Marker {
   inches: number;
@@ -151,17 +152,34 @@ const Calculator = ({ onMarkersChange }: CalculatorProps) => {
     return `${whole} ${numerator}/${simplifiedDenominator}`;
   }
 
+  // const parseFractionInput = (input: string) => {
+  //   input = input.trim();
+  //   if (!input) return 0;
+
+  //   // Match formats: "1 1/2", "3/4", "2", etc.
+  //   const parts = input.split(" ");
+
+  //   let whole = 0;
+  //   let fraction = 0;
+
+  //   if (parts.length === 2) {
+  //     whole = parseInt(parts[0], 10);
+  //     const [numerator, denominator] = parts[1].split("/").map(Number);
+  //     if (denominator) fraction = numerator / denominator;
+  //   } else if (parts[0].includes("/")) {
+  //     const [numerator, denominator] = parts[0].split("/").map(Number);
+  //     if (denominator) fraction = numerator / denominator;
+  //   } else {
+  //     whole = parseFloat(parts[0]);
+  //   }
+
+  //   return whole + fraction;
+  // };
+
   return (
     <div>
       <div className="flex flex-col gap-2">
-        <label className="pr-4">Offset:</label>
-        <input
-          type="number"
-          className=" border-2 p-2"
-          defaultValue={Offset}
-          onChange={(e) => setOffset(Number(e.target.value))}
-        />
-
+        <FractionInput Offset={Offset} setOffset={setOffset} />
         <label className="pr-4">Angle:</label>
         <input
           type="number"
