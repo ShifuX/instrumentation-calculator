@@ -16,7 +16,7 @@ interface CalculatorProps {
 
 const Calculator = ({ onMarkersChange }: CalculatorProps) => {
   // will update this to select a bender radius option
-  const BENDER_RADIUS = 1.5;
+  //const BENDER_RADIUS = 1.5;
   const MULTIPLIER_HALF_ANGLE = 0.017455;
   const MULTIPLIER_FULL_ANGLE = 0.017452;
 
@@ -24,6 +24,7 @@ const Calculator = ({ onMarkersChange }: CalculatorProps) => {
   const [Angle, setAngle] = useState<number>(0);
   const [Travel, setTravel] = useState<number>(0);
   const [Run, setRun] = useState<number>(0);
+  const [BenderRadius, setBenderRadius] = useState<number>(1.5);
 
   const [DisplayTravel, setDisplayTravel] = useState<string>("0");
   const [DisplayNewCenter, setDisplayNewCenter] = useState<string>("0");
@@ -102,14 +103,14 @@ const Calculator = ({ onMarkersChange }: CalculatorProps) => {
 
   // Will later use the benderRadius state variable
   function CalculateHalfAngleLine(): number {
-    const halfAngleLine = MULTIPLIER_HALF_ANGLE * (Angle / 2) * BENDER_RADIUS;
+    const halfAngleLine = MULTIPLIER_HALF_ANGLE * (Angle / 2) * BenderRadius;
     setDisplayHalfAngleLine(toMeasuringTapeFraction(halfAngleLine));
 
     return halfAngleLine;
   }
 
   function CalculateFullAngleLine(): number {
-    const fullAngleLine = MULTIPLIER_FULL_ANGLE * Angle * BENDER_RADIUS;
+    const fullAngleLine = MULTIPLIER_FULL_ANGLE * Angle * BenderRadius;
     setDisplayFullAngleLine(toMeasuringTapeFraction(fullAngleLine));
 
     return fullAngleLine;
@@ -186,6 +187,14 @@ const Calculator = ({ onMarkersChange }: CalculatorProps) => {
           className=" border-2 p-2"
           defaultValue={Angle}
           onChange={(e) => setAngle(Number(e.target.value))}
+        />
+
+        <label className="pr-4">Bender Radius:</label>
+        <input
+          type="number"
+          className=" border-2 p-2"
+          defaultValue={BenderRadius}
+          onChange={(e) => setBenderRadius(Number(e.target.value))}
         />
 
         <button
