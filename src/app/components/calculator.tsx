@@ -180,7 +180,13 @@ const Calculator = ({ onMarkersChange }: CalculatorProps) => {
   return (
     <div>
       <div className="flex flex-col gap-2">
-        <FractionInput Offset={Offset} setOffset={setOffset} />
+        {/* Offset input using FractionInput component */}
+        <FractionInput
+          labelName="Offset"
+          fractionalValue={Offset}
+          setFractionalValue={setOffset}
+        />
+        {/* Angle input */}
         <label className="pr-4">Angle:</label>
         <input
           type="number"
@@ -188,15 +194,12 @@ const Calculator = ({ onMarkersChange }: CalculatorProps) => {
           defaultValue={Angle}
           onChange={(e) => setAngle(Number(e.target.value))}
         />
-
-        <label className="pr-4">Bender Radius:</label>
-        <input
-          type="number"
-          className=" border-2 p-2"
-          defaultValue={BenderRadius}
-          onChange={(e) => setBenderRadius(Number(e.target.value))}
+        {/*Bender Radius input using FractionInput component */}
+        <FractionInput
+          labelName="Bender Radius"
+          fractionalValue={BenderRadius}
+          setFractionalValue={setBenderRadius}
         />
-
         <button
           className="bg-blue-500 hover:bg-blue-400 p-2 rounded-full ml-4"
           onClick={Calculate}

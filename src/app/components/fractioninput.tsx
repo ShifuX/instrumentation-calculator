@@ -2,24 +2,29 @@
 import { useEffect, useState } from "react";
 
 type FractionInputProps = {
-  Offset: number;
-  setOffset: (value: number) => void;
+  labelName: string;
+  fractionalValue: number;
+  setFractionalValue: (value: number) => void;
 };
 
-const FractionInput: React.FC<FractionInputProps> = ({ Offset, setOffset }) => {
-  const [whole, setWhole] = useState<number>(Math.floor(Offset));
+const FractionInput: React.FC<FractionInputProps> = ({
+  labelName,
+  fractionalValue,
+  setFractionalValue,
+}) => {
+  const [whole, setWhole] = useState<number>(Math.floor(fractionalValue));
   const [numerator, setNumerator] = useState<number>(0);
   const [denominator, setDenominator] = useState<number>(1);
 
   useEffect(() => {
     if (denominator === 0) return;
     const fractionValue = whole + numerator / denominator;
-    setOffset(fractionValue);
-  }, [whole, numerator, denominator, setOffset]);
+    setFractionalValue(fractionValue);
+  }, [whole, numerator, denominator, setFractionalValue]);
 
   return (
     <div className="flex items-center gap-4">
-      <label className="pr-4">Offset:</label>
+      <label className="pr-4">{labelName}:</label>
 
       {/* Whole number input */}
       <input
