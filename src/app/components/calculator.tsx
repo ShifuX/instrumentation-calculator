@@ -207,7 +207,7 @@ const Calculator = ({ onMarkersChange }: CalculatorProps) => {
           Calculate
         </button>
       </div>
-      /* New Center: Shrink, Half Angle: Setback, Full Angle: Arc Length */
+      {/* New Center: Shrink, Half Angle: Setback, Full Angle: Arc Length */}
       <div className="flex flex-col pt-10">
         <p>Travel: {DisplayTravel}</p>
         <p>Shrink: {DisplayNewCenter}</p>
