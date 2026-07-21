@@ -23,10 +23,15 @@ export default function Home() {
     <div className="items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <Calculator onMarkersChange={setMarkers} />
       <p className="mt-2">Currently tube is running from right to left</p>
-      <p className="mt-2">Throw New Center forward of original center line</p>
-      <p className="mt-2">Start measurement of travel starting at NC line and throw measurement backwards</p>
-      <p className="mt-2">Throw the half angle line to the back (relative to travel mark) 
-        then measure the FA line relative to HA line forward</p>
+      <p className="mt-2">Throw Shrink forward of original center line</p>
+      <p className="mt-2">
+        Start measurement of travel starting at Shrink line and throw
+        measurement backwards
+      </p>
+      <p className="mt-2">
+        Throw the Setback line to the back (relative to travel mark) then
+        measure the Arc Length line relative to Setback line forward
+      </p>
       <Tube lengthInInches={12} markers={markers} />
     </div>
   );
